@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperScissors</title>
+</head>
+<script>
+    function getComputerChoice()
+    {
+        let rd = Math.random();
+        if (rd >= 0 && rd < 0.3333)
+            return "rock";
+        else if (rd < 0.66667)
+            return "paper";
+        else return "scissors";
+    }
+    
+    function getHumanChoice() {
+        return prompt("What do you choose?");
+    }
+    
+    let humanScore = 0;
+    let computerScore = 0;
+    function playRound(humanChoice, computerChoice)
+    {
+        if ((humanChoice == "rock" && computerChoice == "rock" )|| (humanChoice == "paper" && computerChoice == "paper" ) || (humanChoice == "scissors" && computerChoice == "scissors" ))
+            return "Draw! No one win";
+        else if (humanChoice == "rock" && computerChoice == "scissors")
+        {
+            humanScore++;
+            return "You win! Rock beats Scissors";
+        }
+        else if (humanChoice == "paper" && computerChoice == "rock")
+        {
+            humanScore++;
+            return "You win! Paper beats Rock";
+        }
+        else if (humanChoice == "scissors" && computerChoice == "paper")
+        {
+            humanScore++;
+            return "You win! Scissors beats Paper";
+        }
+        else if (computerChoice == "rock" && humanChoice == "scissors")
+        {
+            computerScore++;
+            return "You lose! Rock beats Scissors";
+        }
+        else if (computerChoice == "paper" && humanChoice == "rock")
+        {
+            computerScore++;
+            return "You lose! Paper beats Rock";
+        }
+        else {
+            computerScore++;
+            return "You lose! Scissors beats Paper";
+        }
+    }
+    function playGame()
+    {
+        for (let i = 0; i < 5; i++)
+        {
+            let computerSelection = getComputerChoice();
+            let humanSelection = getHumanChoice().toLowerCase();
+            console.log(computerSelection);
+            console.log(humanSelection);
+            console.log(playRound(humanSelection,computerSelection));
+        }
+    }
+    playGame();
+</script>
+</html>
